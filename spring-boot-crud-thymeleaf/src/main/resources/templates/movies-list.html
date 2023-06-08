@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Filtered Books</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Filtered PC Video Games</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>PC Video Game</th>
+                    <th>Developer</th>
+                    <th>Release Date</th>
+                    <th>Price</th>
+                    <th>Genre</th>
+                    <th>Publisher</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="movie : ${movies}">
+                    <td th:text="${movie.movieName}"></td>
+                    <td th:text="${movie.movieAuthor}"></td>
+                    <td th:text="${movie.movieDate}"></td>
+                    <td th:text="${movie.moviePrice}"></td>
+                    <td th:text="${movie.genre.genreName}"></td>
+                    <td th:text="${movie.moviePublication}"></td>
+                    <td>
+                        <a th:href="@{/editmovie/{id}(id=${movie.id})}" class="btn btn-primary">
+                            Edit
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{/deletemovie/{id}(id=${movie.id})}" class="btn btn-danger">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

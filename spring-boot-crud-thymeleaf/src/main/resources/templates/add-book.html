@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add Book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+ 
+<body>
+    <div class="container my-5">
+        <h3> Add Book</h3>
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-10">
+                    <form action="#" th:action="@{/addbook}" th:object="${book}"
+                                                                       method="post">
+                        <div class="row">
+    <div class="form-group col-md-8">
+        <label for="name" class="col-form-label">Video Game Name</label> 
+        <input type="text" th:field="*{name}" class="form-control"
+            id="firstName" placeholder="Video Game Name"maxlength="50" required />
+    </div>
+    <div class="form-group col-md-8">
+        <label for="name" class="col-form-label">Developer</label> 
+        <input type="text" th:field="*{author}" class="form-control"
+            id="lastName" placeholder="Developer"maxlength="20" required />
+    </div>
+     <div class="form-group col-md-8">
+        <label for="email" class="col-form-label">Publisher</label> 
+        <input type="text" th:field="*{publication}" class="form-control"
+            id="publication" placeholder="Publisher"maxlength="20" required />
+    </div>
+    <div class="form-group col-md-8">
+        <label for="email" class="col-form-label">Release Date</label> 
+        <input type="text" th:field="*{bookDate}" class="form-control"
+            id="bookDate" placeholder="Publisher"maxlength="4" required />
+    </div>
+</div>
+    <div class="form-group col-md-8">
+        <label for="name" class="col-form-label">Price</label> 
+        <input type="text" th:field="*{bookPrice}" class="form-control"
+            id="moviePrice" placeholder="Price"maxlength="10" required />
+    </div>
+    
+    <div class="form-group col-md-8">
+        <label for="genre" class="col-form-label">Genre</label> 
+        <select th:field="*{genre}" class="form-control" id="genre" required>
+            <option value="">Select Genre</option>
+            <option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.genreName}"></option>
+        </select>
+    </div>
+    
+   
+
+ 
+                            <div class="col-md-6">
+                                <input type="submit" class="btn btn-primary" value=" Submit ">
+                            </div>
+ 
+                            <input type="hidden" id="id" th:field="*{id}">
+     
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+ 
+</html>

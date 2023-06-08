@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>All Books</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+ 
+<body>
+    <div class="container my-2">
+    <div class="card">
+    <div class="card-body">
+        <div th:switch="${genres}" class="container my-5">
+        <p class="my-5">
+                <a href="/addgenre" class="btn btn-primary">
+                <i class="fas fa-user-plus ml-2"> Add a Genre </i></a>
+            </p>
+            <div class="col-md-10">
+                <h2 th:case="null">No record found !!</h2>
+                <div th:case="*">
+                    <table class="table table-striped table-responsive-md">
+                        <thead>
+                            <tr>
+                                <th>Genre</th>             
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="genre : ${genres}">
+                                <td th:text="${genre.genreName}"></td>
+                               
+                                <td>
+                                    <a th:href="@{/editgenre/{id}(id=${genre.id})}"
+                                             class="btn btn-primary">
+                                        <i class="fas fa-user-edit ml-2"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a th:href="@{/deletegenre/{id}(id=${genre.id})}"
+                                              class="btn btn-primary">
+                                        <i class="fas fa-user-times ml-2"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+ 
+            </div>
+        <p class="my-5">
+                <a href="/" class="btn btn-primary">
+                <i class="fas fa-user-plus ml-2"> See the PC Video Games </i></a>
+            </p>
+         
+            
+            
+           
+            
+            
+            <p class="my-5">
+                <a href="/index2" class="btn btn-primary">
+                <i class="fas fa-user-plus ml-2"> See the Console Video Games </i></a>
+            </p>
+             <p class="my-5">
+                <a href="/index3" class="btn btn-primary">
+                <i class="fas fa-user-plus ml-2"> See the promotions </i></a>
+            </p>
+        </div>
+        
+         
+    </div>
+    </div>
+    </div>
+</body>
+ 
+</html>
